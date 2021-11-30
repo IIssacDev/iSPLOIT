@@ -372,6 +372,7 @@ function XanaxUILib:CreateWindow(WindowText)
 			local LABELBOTTOMLIEN = Instance.new("Frame")
 			local LABELTopLien = Instance.new("Frame")
 			
+			Label.RichText = true
 			Label.Name = "Label"
 			Label.Parent = ObjectHolder
 			Label.BackgroundColor3 = Color3.fromRGB(43, 43, 43)
