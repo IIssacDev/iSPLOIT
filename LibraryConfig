@@ -1,6 +1,6 @@
 --[[
 EXAMPLE:
-local XanaxUILib = loadstring(game:HttpGet("https://pastebin.com/raw/XZz3Ytbu"))()
+local XanaxUILib = loadstring(game:HttpGet("https://raw.githubusercontent.com/IIssacDev/iSPLOIT-Library-Config/main/LibraryConfig"))()
 local Ui = XanaxUILib:CreateWindow("Example UI")
 local Info = Ui:CreateSection("Info")
 local ExampleSection = Ui:CreateSection("Example")
