@@ -1,6 +1,6 @@
 --[[
 EXAMPLE:
-local XanaxUILib = loadstring(game:HttpGet("https://raw.githubusercontent.com/IIssacDev/iSPLOIT-Library-Config/main/LibraryConfig"))()
+local XanaxUILib = loadstring(game:HttpGet("https://pastebin.com/raw/XZz3Ytbu"))()
 local Ui = XanaxUILib:CreateWindow("Example UI")
 local Info = Ui:CreateSection("Info")
 local ExampleSection = Ui:CreateSection("Example")
@@ -280,6 +280,7 @@ function XanaxUILib:CreateWindow(WindowText)
 			local BTNBotomLien = Instance.new("Frame")
 			local BTNTopLien = Instance.new("Frame")
 			
+			Button.RichText = true
 			Button.Name = "Button"
 			Button.Parent = ObjectHolder
 			Button.BackgroundColor3 = Color3.fromRGB(43, 43, 43)
