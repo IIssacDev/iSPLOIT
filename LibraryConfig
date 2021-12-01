@@ -241,6 +241,7 @@ function XanaxUILib:CreateWindow(WindowText)
 		padding.Parent = ObjectHolder
 		padding.PaddingTop = UDim.new(0.0299999993, 0)
 		
+		TabBtn.RichText = true
 		TabBtn.Name = "TabBtn"
 		TabBtn.Parent = TabBtnHolder
 		TabBtn.BackgroundColor3 = Color3.fromRGB(52, 52, 52)
