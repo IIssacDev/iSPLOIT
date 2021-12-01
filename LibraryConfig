@@ -117,6 +117,7 @@ function XanaxUILib:CreateWindow(WindowText)
 	Main.ScaleType = Enum.ScaleType.Slice
 	Main.SliceCenter = Rect.new(4, 4, 252, 252)
 	
+	TabBtns.RichText = true
 	TabBtns.Name = "TabBtns"
 	TabBtns.Parent = Main
 	TabBtns.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -169,6 +170,7 @@ function XanaxUILib:CreateWindow(WindowText)
 	Line2.Position = UDim2.new(0.277909726, 0, 0.866666675, 0)
 	Line2.Size = UDim2.new(0, 304, 0, 4)
 	
+	UiTitle.RichText = true
 	UiTitle.Name = "UiTitle"
 	UiTitle.Parent = Top
 	UiTitle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -191,6 +193,7 @@ function XanaxUILib:CreateWindow(WindowText)
 	TabTxt.TextColor3 = Color3.fromRGB(255, 255, 255)
 	TabTxt.TextSize = 14.000
 	
+	TabNameStatus.RichText = true
 	TabNameStatus.Name = "TabNameStatus"
 	TabNameStatus.Parent = Top
 	TabNameStatus.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
