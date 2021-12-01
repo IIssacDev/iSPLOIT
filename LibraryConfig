@@ -188,7 +188,7 @@ function XanaxUILib:CreateWindow(WindowText)
 	TabTxt.Position = UDim2.new(0, 0, 0.866666675, 0)
 	TabTxt.Size = UDim2.new(0, 117, 0, 17)
 	TabTxt.Font = Enum.Font.GothamSemibold
-	TabTxt.Text = "-Tabs-"
+	TabTxt.Text = "SECTIONS"
 	TabTxt.TextColor3 = Color3.fromRGB(255, 255, 255)
 	TabTxt.TextSize = 14.000
 	
