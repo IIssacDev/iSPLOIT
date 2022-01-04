@@ -113,3 +113,10 @@ weapon.fire = function(...)
 end;
 end)
 
+local MouseUnlock = Button:Clone()
+MouseUnlock.Parent = ExploitFrame
+MouseUnlock.Name = "MouseUnlock"
+MouseUnlock.Text = "MOUSE UNLOCK"
+MouseUnlock.MouseButton1Click:Connect(function()
+	Player.CameraMode = "Classic"
+end)
