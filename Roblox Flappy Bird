@@ -94,3 +94,20 @@ CustomBird.MouseButton1Click:Connect(function()
     Player.OwnsCustomBird.Value = true
     Player.SkinChosen.Value = "CustomBird"
 end)
+
+local RainbowBird = Button:Clone()
+RainbowBird.Parent = ExploitFrame
+RainbowBird.Name = "RainbowBird"
+RainbowBird.Text = [[<font color="#17a589">RAINBOW BIRD</font>]]
+RainbowBird.MouseButton1Click:Connect(function()
+    Player.OwnsCustomBird.Value = true
+    Player.SkinChosen.Value = "CustomBird"
+    while wait() do
+    local R = math.random(1,255)
+    local G = math.random(1,255)
+    local B = math.random(1,255)
+    Player.R.Value = R
+    Player.G.Value = G
+    Player.B.Value = B
+    end
+end)
