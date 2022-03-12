@@ -1,90 +1,58 @@
--- UI Opener
+--- Functions
 local Player = game.Players.LocalPlayer
-local UI = Instance.new("ScreenGui")
-local MainFrame = Instance.new("Frame")
-local UICorner = Instance.new("UICorner")
-local Sections = Instance.new("Frame")
-local Title = Instance.new("TextLabel")
-local TitleBorder = Instance.new("Frame")
-local TeleportItems = Instance.new("TextButton")
+--- UI Lib
+local UILibrary = loadstring(game:HttpGet("https://pastebin.com/raw/V1ca2q9s"))()
+local MainUI = UILibrary.Load("Buzo's A QT!")
+local Main = MainUI.AddPage("Main")
+local Self = MainUI.AddPage("Self")
+local Farms = MainUI.AddPage("Farm")
+local Teleports = MainUI.AddPage("Teleport")
 
--- Edits
-UI.ResetOnSpawn = false
-UI.Parent = Player.PlayerGui
-UI.Name = "IID"
-UICorner.CornerRadius = UDim.new(0,4)
-MainFrame.Name = "MainFrame"
-MainFrame.Parent = UI
-MainFrame.Position = UDim2.new(0.213,0,0.153,0)
-MainFrame.Size = UDim2.new(0.573,0,0.607,0)
-MainFrame.BackgroundColor3 = Color3.fromRGB(68,68,68)
-MainFrame.Draggable = true
-MainFrame.Active = true
-MainFrame.BorderSizePixel = 0
-UICorner.Parent = MainFrame
-Sections.Name = "Sections"
-Sections.Parent = MainFrame
-Sections.BackgroundColor3 = Color3.fromRGB(27,32,53)
-Sections.Size = UDim2.new(0.197,0,1,0)
-Sections.Position = UDim2.new(0,0,0,0)
-UICorner.Parent = Sections
-Title.Name = "Title"
-Title.Text = "I.I.D"
-Title.Parent = Sections
-Title.BackgroundTransparency = 1
-Title.Size = UDim2.new(1,0,0.136,0)
-Title.Position = UDim2.new(0,0,0,0)
-Title.TextColor3 = Color3.fromRGB(255,255,255)
-Title.TextStrokeTransparency = 0
-Title.TextStrokeColor3 = Color3.fromRGB(0,0,0)
-Title.Font = "SourceSansSemibold"
-Title.TextScaled = true
-TitleBorder.Name = "Border"
-TitleBorder.Parent = Title
-TitleBorder.BackgroundColor3 = Color3.fromRGB(255,255,255)
-TitleBorder.BorderSizePixel = 0
-TitleBorder.Position = UDim2.new(0,0,1,0)
-TitleBorder.Size = UDim2.new(1,0,0.04,0)
-TeleportItems.Text = "TELEPORT ITEMS"
-TeleportItems.TextColor3 = Color3.fromRGB(255,255,255)
-TeleportItems.TextStrokeTransparency = 0
-TeleportItems.Font = "SourceSansBold"
-TeleportItems.BackgroundColor3 = Color3.fromRGB(27,42,53)
-TeleportItems.BorderSizePixel = 0
-TeleportItems.Position = UDim2.new(0.243,0,0.302,0)
-TeleportItems.Size = UDim2.new(0,369,0,54)
-TeleportItems.Parent = MainFrame
+local MainLabel = Main.AddLabel("Stands Awakening Script | FLIP")
+local MainDescription = Main.AddLabel([[Discord.com/Invite/Killed]])
 
-
-
-
--- Functions
-Player.Chatted:Connect(function(val)
-	if val == "/open" then
-		print("opened ui")
-		MainFrame.Visible = true
-	end
+local SpeedToggle = Self.AddSlider("WalkSpeed", {Min = 0, Max = 120, Def = 50}, function(Value)
+    Player.Character.Humanoid.WalkSpeed = Value
 end)
-Player.Chatted:Connect(function(val)
-	if val == "/close" then
-		print("closed ui")
-		MainFrame.Visible = false
-	end
+
+local Teleport = Teleports.AddDropdown("Teleport", {
+"Bank",
+"Stand Storage",
+"Farming Zone"
+}, function(Value)
+    if Value == "Bank" then
+        Player.Character.HumanoidRootPart.CFrame = CFrame.new(1343.32251, 577.051086, -513.389526, -0.997838974, 1.34862586e-12, 0.0657067597, 2.51800492e-09, 1, 3.82185164e-08, -0.0657067597, 3.83013763e-08, -0.997838974)
+        elseif Value == "Stand Storage" then
+        Player.Character.HumanoidRootPart.CFrame = CFrame.new(1398.97021, 577.950012, -228.04213, -0.987597167, -2.3732202e-08, -0.157008991, -2.96657827e-08, 1, 3.54479077e-08, 0.157008991, 3.96660482e-08, -0.987597167)
+        elseif Value == "Farming Zone" then
+        Player.Character.HumanoidRootPart.CFrame = CFrame.new(-283.204193, 455.357574, -1485.0282, 0.48182565, 1.50233763e-08, 0.876267076, -1.12116155e-07, 1, 4.45036257e-08, -0.876267076, -1.19686689e-07, 0.48182565)
+    end
 end)
-Player.Chatted:Connect(function(val)
-	if val == "/destroy" then
-		print("destroyed ui")
-		UI:Destroy()
-	end
+local FirstButton = Farms.AddButton("Banknote Farming", function() --- Under Section & Function that controls what it does below
+	while wait() do
+       for i,v in pairs(workspace:GetChildren()) do
+       if v.Name == "Banknote" then
+           local thing = v:FindFirstChild("Handle")
+           if thing then
+             thing.CFrame = CFrame.new(game.Players.LocalPlayer.Character.HumanoidRootPart.Position)
+           end
+           wait()
+       end
+   end
+end
 end)
-TeleportItems.MouseButton1Click:Connect(function()
+
+local ItemFarm = Farms.AddToggle("Item Farm", false, function(Value)
        for i,v in pairs(workspace:GetChildren()) do
        if v:IsA("Tool") then
            local thing = v:FindFirstChild("Handle")
            if thing then
-             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = thing.CFrame
+             thing.CFrame = CFrame.new(game.Players.LocalPlayer.Character.HumanoidRootPart.Position)
+             elseif Value == false then
+                break
            end
            wait()
        end
    end
 end)
+local NoteTip = Farms.AddLabel("(^RECOMMEND GOING TO FARMING ZONE^)")
