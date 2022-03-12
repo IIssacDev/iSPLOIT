@@ -1,0 +1,90 @@
+-- UI Opener
+local Player = game.Players.LocalPlayer
+local UI = Instance.new("ScreenGui")
+local MainFrame = Instance.new("Frame")
+local UICorner = Instance.new("UICorner")
+local Sections = Instance.new("Frame")
+local Title = Instance.new("TextLabel")
+local TitleBorder = Instance.new("Frame")
+local TeleportItems = Instance.new("TextButton")
+
+-- Edits
+UI.ResetOnSpawn = false
+UI.Parent = Player.PlayerGui
+UI.Name = "IID"
+UICorner.CornerRadius = UDim.new(0,4)
+MainFrame.Name = "MainFrame"
+MainFrame.Parent = UI
+MainFrame.Position = UDim2.new(0.213,0,0.153,0)
+MainFrame.Size = UDim2.new(0.573,0,0.607,0)
+MainFrame.BackgroundColor3 = Color3.fromRGB(68,68,68)
+MainFrame.Draggable = true
+MainFrame.Active = true
+MainFrame.BorderSizePixel = 0
+UICorner.Parent = MainFrame
+Sections.Name = "Sections"
+Sections.Parent = MainFrame
+Sections.BackgroundColor3 = Color3.fromRGB(27,32,53)
+Sections.Size = UDim2.new(0.197,0,1,0)
+Sections.Position = UDim2.new(0,0,0,0)
+UICorner.Parent = Sections
+Title.Name = "Title"
+Title.Text = "I.I.D"
+Title.Parent = Sections
+Title.BackgroundTransparency = 1
+Title.Size = UDim2.new(1,0,0.136,0)
+Title.Position = UDim2.new(0,0,0,0)
+Title.TextColor3 = Color3.fromRGB(255,255,255)
+Title.TextStrokeTransparency = 0
+Title.TextStrokeColor3 = Color3.fromRGB(0,0,0)
+Title.Font = "SourceSansSemibold"
+Title.TextScaled = true
+TitleBorder.Name = "Border"
+TitleBorder.Parent = Title
+TitleBorder.BackgroundColor3 = Color3.fromRGB(255,255,255)
+TitleBorder.BorderSizePixel = 0
+TitleBorder.Position = UDim2.new(0,0,1,0)
+TitleBorder.Size = UDim2.new(1,0,0.04,0)
+TeleportItems.Text = "TELEPORT ITEMS"
+TeleportItems.TextColor3 = Color3.fromRGB(255,255,255)
+TeleportItems.TextStrokeTransparency = 0
+TeleportItems.Font = "SourceSansBold"
+TeleportItems.BackgroundColor3 = Color3.fromRGB(27,42,53)
+TeleportItems.BorderSizePixel = 0
+TeleportItems.Position = UDim2.new(0.243,0,0.302,0)
+TeleportItems.Size = UDim2.new(0,369,0,54)
+TeleportItems.Parent = MainFrame
+
+
+
+
+-- Functions
+Player.Chatted:Connect(function(val)
+	if val == "/open" then
+		print("opened ui")
+		MainFrame.Visible = true
+	end
+end)
+Player.Chatted:Connect(function(val)
+	if val == "/close" then
+		print("closed ui")
+		MainFrame.Visible = false
+	end
+end)
+Player.Chatted:Connect(function(val)
+	if val == "/destroy" then
+		print("destroyed ui")
+		UI:Destroy()
+	end
+end)
+TeleportItems.MouseButton1Click:Connect(function()
+       for i,v in pairs(workspace:GetChildren()) do
+       if v:IsA("Tool") then
+           local thing = v:FindFirstChild("Handle")
+           if thing then
+             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = thing.CFrame
+           end
+           wait()
+       end
+   end
+end)
